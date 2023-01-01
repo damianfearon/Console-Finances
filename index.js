@@ -1,3 +1,5 @@
+// Task: Create code for analyzing the financial records of a company. 
+
 var finances = [
 ['Jan-2010', 867884],
 ['Feb-2010', 984655],
@@ -86,3 +88,16 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+console.log (finances.length)
+var totalAmount = 0
+for (var i = 0; i < finances.length; i++) {
+    console.log(finances[i][1])
+    console.log("at the moment, total amount equals ",totalAmount)
+    totalAmount = totalAmount + finances[i][1]
+    console.log("now, total amount equals ",totalAmount)
+
+}
+
+
+console.log("totalAmount; ", totalAmount)
