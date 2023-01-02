@@ -1,4 +1,3 @@
-// Task: Create code for analyzing the financial records of a company. 
 
 var finances = [
 ['Jan-2010', 867884],
@@ -89,15 +88,92 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
-console.log (finances.length)
-var totalAmount = 0
-for (var i = 0; i < finances.length; i++) {
-    console.log(finances[i][1])
-    console.log("at the moment, total amount equals ",totalAmount)
-    totalAmount = totalAmount + finances[i][1]
-    console.log("now, total amount equals ",totalAmount)
+// Calculate the total number of months from the dataset.
 
+//total months is equal to the length of the array.
+
+
+// var Months = finances.length;{
+//     console.log("Financial Analysis");
+//     console.log("...................");
+//     console.log("Total Months " + Months);
+//     }
+
+   
+// Calculate the net total amount of profit/loss for the entire period.
+// Calculate the average of the changes in profit/loss over the entire period.
+// Calculate the greatest increase in profits including the date and amount
+// Calculate the greatest decrease in losses including date and amount for the entire period.
+    
+var total = 0;
+var average = 0;
+
+//finances.length will give us The total number of months included in the dataset.
+var highest = -999999999999;
+var lowest = 999999999999;
+var highestMonth;
+var lowestMonth;
+
+//Loop for verifying all info in the array
+for(var i =0; i < finances.length; i++){
+    
+    //sum The net total amount of Profit/Losses over the entire period.
+    total += finances[i][1];
+     
+    if(lowest > finances[i][1]){
+        lowest = finances[i][1];
+        lowestMonth = finances[i][0];
+    }
+
+    if (highest < finances[i][1]) {
+        highest = finances[i][1];        
+        highestMonth = finances[i][0];
+    }
 }
 
+// calculate the average of the Profit/Losses over the entire period.
+average = (total/finances.length);
 
-console.log("totalAmount; ", totalAmount)
+console.log("Financial Analysis" +
+            "\n----------------------------" +
+            "\nTotal Months: " + finances.length +
+            "\nTotal: " + total +
+            "\nAverage: " + average.toFixed(2) + //Using toFixed(2) to show only 2 number after decimal
+            "\nMonth with the Greatest Profits: " + highestMonth + " ($" + highest + ")" +
+            "\nMonth with the Greatest Losses: " + lowestMonth + " ($" + lowest + ")"
+);
+
+//reset var
+lowest = 999999999999;
+highest = -999999999999;
+total = 0;
+var profitLossesDifference = 0;
+
+//Loop for verifying all info in the array
+for(var i =1; i < finances.length; i++){
+    
+    //calculate the difference of profit/losses between actual month and past month    
+    var profitLossesDifference = (finances[i][1] - finances[i-1][1]);
+    
+    //sum The net total amount of change Profit/Losses month-to-month over the entire period.
+    total += profitLossesDifference;
+     
+    if(lowest > profitLossesDifference){
+        lowest = profitLossesDifference;
+        lowestMonth = (finances[i-1][0] + " to " + finances[i][0]);
+    }
+
+    if (highest < profitLossesDifference) {
+        highest = profitLossesDifference;        
+        highestMonth = (finances[i-1][0] + " to " + finances[i][0]);
+    }
+}
+
+// calculate the average change in frofit/losses since first month (-1 month because were calculating the difference between the month's)
+average = (total/(finances.length -1));
+
+console.log("----------------------------" +
+            "\nAverage Change in Profit/Losses from one month to another: " + average.toFixed(2) + //Using toFixed(2) to show only 2 number after decimal
+            "\nGreatest Increase in Profits from one month to another: " + highestMonth + " ($" + highest + ")" +
+            "\nGreatest Decrease in Profits from one month to another: " + lowestMonth + " ($" + lowest + ")"
+);
