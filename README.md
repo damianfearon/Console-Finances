@@ -27,7 +27,7 @@ You will need to track what the total change in profits are from month to month 
 <h2>Screenshot</h2>
 
 <img
-  src="images\screenshot1.png"
+  src="Images\screenshot1.png"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 300px">
