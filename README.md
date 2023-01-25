@@ -30,4 +30,4 @@ You will need to track what the total change in profits are from month to month 
   src="Images\screenshot1.png"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; margin: 0 auto; max-width: 300px">
+  style="display: inline-block; margin: 0 auto; max-width: 300px"># Console-Finances
